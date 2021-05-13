@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('category_parent_id');
             $table->integer('brand_id');
             $table->string('name');
-            $table->text('desciption');
+            $table->text('description');
             $table->integer('price_core');
             $table->integer('price_sell');
             $table->string('image');
