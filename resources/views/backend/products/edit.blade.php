@@ -19,7 +19,7 @@
             </ul>
         </div>
     @endif
-
+    <!-- Không hard code dùng route name -->
     <form name="product" action="{{ url("/products/update/$product->id") }}" method="post" enctype="multipart/form-data">
 
         @csrf
@@ -42,7 +42,7 @@
 
         <div class="form-group">
             <label for="product_status">Product_status:</label>
-
+            <!-- Không hard code status dùng const -->
             @php
                 if($product->status == 1) {
                     $checkedRadioStatus = " checked";
@@ -53,7 +53,7 @@
 
             <input type="radio" name="product_status" id="product_status"
                    value="1" {{ $checkedRadioStatus }}> On sell
-
+            <!-- Không hard code status dùng const -->
             @php
                 if($product->status == 2) {
                     $checkedRadioStatus = " checked";

@@ -14,6 +14,7 @@ class CreateInformationTable extends Migration
     public function up()
     {
         Schema::create('information', function (Blueprint $table) {
+            //Nên nghĩ xem có field nào không cần required không ?
             $table->id();
             $table->string('shop_name');
             $table->string('company_name');

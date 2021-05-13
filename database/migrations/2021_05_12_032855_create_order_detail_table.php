@@ -17,6 +17,7 @@ class CreateOrderDetailTable extends Migration
             $table->id();
             $table->integer('order_id');
             $table->integer('product_id');
+            //Không cần product name có thể dùng relation_ships để  lấý product_name
             $table->string('product_name');
             $table->integer('product_price');
             $table->integer('product_quantity');

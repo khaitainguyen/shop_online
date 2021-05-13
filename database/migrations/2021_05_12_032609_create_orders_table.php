@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('total_price');
+            //Nên có comment các status order
             $table->integer('status');
             $table->integer('quantity');
             $table->timestamps();

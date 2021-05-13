@@ -17,6 +17,7 @@ class CreatePartnersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
+            //Comment vào status
             $table->integer('status');
             $table->timestamps();
         });

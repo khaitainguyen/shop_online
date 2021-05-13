@@ -20,13 +20,19 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id');
             $table->string('name');
             $table->text('description');
+            //Tên field không rõ nghĩa nên chuyển thành orginal_price và sell_price
             $table->integer('price_core');
             $table->integer('price_sell');
             $table->string('image');
+            //Không nên lưu quantity vào products và tách ra thêm 1 bảng tên store (Kho để lưu trữ số lượng)
             $table->integer('quantity');
+            //Không cần trường này
             $table->integer('quantity_sold');
+            //Nên có comment để  biết có status nào
             $table->integer('status');
+            //Nên để tên trường là expired_date đầy đủ hơn cho rõ nghĩa
             $table->dateTime('expired');
+            //Tên trường này nên để là is_hot
             $table->integer('product_hot');
             $table->timestamps();
         });

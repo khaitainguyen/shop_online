@@ -4,6 +4,7 @@
 
 @section('content')
     <h1>Delete product</h1>
+    <!-- Không hard code dùng route name -->
     <form name="product" action="{{ url("/products/destroy/$product->id") }}" method="post">
 
         @csrf
