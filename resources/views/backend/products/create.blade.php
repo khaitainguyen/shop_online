@@ -13,7 +13,7 @@
             </ul>
         </div>
     @endif
-
+    <!-- Không hard code dùng route name -->
     <form name="product" action="{{ url("/products/store") }}" method="post" enctype="multipart/form-data">
 
         @csrf
@@ -32,12 +32,13 @@
                 @endforeach
             </select> -->
         </div>
-
+        <!-- Không hard code status dùng const -->
         <div class="form-group">
             <label for="product_status">Product status:</label>
             <input type="radio" name="product_status" id="product_status" value="1"> On sell
             <input type="radio" name="product_status" id="product_status" value="2"> Stop sell
         </div>
+        <!-- Không hard code status dùng const -->
         <div class="form-group">
             <label for="product_hot">Hot product:</label>
             <input type="radio" name="product_hot" id="product_hot" value="1"> Hot

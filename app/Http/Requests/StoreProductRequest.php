@@ -27,7 +27,9 @@ class StoreProductRequest extends FormRequest
             'product_name' => 'required',
             // 'category_id' => 'required',
             'product_desc' => 'required',
+            //Price chỉ cho phép nhập số
             'product_quantity' => 'required',
+            //Price chỉ cho phép nhập số
             'price_sell' => 'required',
         ];
     }

@@ -11,6 +11,8 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    //Nên tách ra 1 tầng repositories để xử lý các vấn đề liên quan tới database vì như thế này code đang tương dối dài ở controllers
+    // Repository chỉ làm việc với query
     public function index(Request $request){
        
         $sort = $request->query('product_sort', "");
@@ -81,7 +83,7 @@ class ProductController extends Controller
         $price_sell = $request->input('price_sell');
         $price_core = $request->input('price_core');
         $product_hot = $request->input('product_hot', 2);
-
+        //Có 1 cách khác là get các request all mình cần sử  dụng
         $product = new Product();
 
         $product->name = $product_name;
@@ -111,7 +113,8 @@ class ProductController extends Controller
         $product_desc = $request->input('product_desc');
         $product_quantity = $request->input('product_quantity');
         $product_price = $request->input('price_sell');
-
+        //Có 1 cách khác là get các request all mình cần sử  dụng
+        // Nên đẩy find or Fail lên trước sẽ giúp tăng performance
         $product = Product::findOrFail($id);
        
         $product->name = $product_name;

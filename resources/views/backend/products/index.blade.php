@@ -11,6 +11,7 @@
 
             <select name="product_status" class="form-control" style="width: 150px; margin-right: 20px">
                 <option value="">Product status</option>
+                <!-- Không fix cứng dùng const nhé -->
                 <option value="1" {{ $productStatus == 1 ? " selected" : "" }}>On sell</option>
                 <option value="2" {{ $productStatus == 2 ? " selected" : "" }}>Stop sell</option>
             </select>
@@ -52,6 +53,7 @@
     @endif
 
     <div style="padding: 20px">
+        <!-- Dùng route name không nên fix cứng -->
         <a href="{{ url("/products/create") }}" class="btn btn-info">Create product</a>
     </div>
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -73,8 +75,8 @@
                             <td>
                             </td>
                             <td>
+                                <!-- Không hard code status dùng const -->
                                 {{ $product->name }}
-
                                 @if($product->status == 1)
                                     <p><span class="bg-success text-white">On Sell</span></p>
                                 @endif
@@ -86,6 +88,7 @@
                             <td>{{ $product->price_sell }} USD</td>
                             <td>{{ $product->quantity }}</td>
                             <td>
+                                <!-- Dùng route name ko hard code link -->
                                 <a href="{{ url("/products/edit/$product->id") }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ url("/products/delete/$product->id") }}" class="btn btn-danger">Delete</a>
                             </td>

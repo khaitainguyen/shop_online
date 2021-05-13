@@ -18,6 +18,7 @@ class CreateBrandsTable extends Migration
             $table->string('name');
             $table->text('desciption');
             $table->string('image');
+            //Address nên để  dạng text vì có thể sẽ có trường hợp address dài hơn và nên để nullable vì ở brand thường không quá cần địa chỉ
             $table->string('address');
             $table->timestamps();
         });

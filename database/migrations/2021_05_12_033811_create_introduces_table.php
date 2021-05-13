@@ -17,6 +17,7 @@ class CreateIntroducesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('desciption');
+            //Nên có giá trị default và comment các type cần có
             $table->integer('type');
             $table->timestamps();
         });

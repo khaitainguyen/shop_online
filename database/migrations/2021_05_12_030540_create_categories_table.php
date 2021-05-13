@@ -17,6 +17,8 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            //Categories level 1 thì làm sao có parent_id được 
+            //-> Nên set default value = 0 với các trường là integers trong trường hợp ko truyền gì
             $table->integer('parent_id');
             $table->timestamps();
         });
