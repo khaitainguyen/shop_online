@@ -11,6 +11,9 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    const SELLING = 1;
+    const STOP_SELL = 2;
+   
     public function index(Request $request){
        
         $sort = $request->query('product_sort', "");
@@ -44,6 +47,9 @@ class ProductController extends Controller
         $data["productStatus"] = $productStatus;
         $data["category_id"] = $category_id;
         $data["sort"] = $sort;
+        $data["sort"] = $sort;
+        $data["sort"] = $sort;
+       
 
         $categories = DB::table('categories')->get();
         $data["categories"] = $categories;
@@ -103,8 +109,6 @@ class ProductController extends Controller
     }
 
     public function update(UpdateProductRequest $request, $id) {
-        $validatedData = $request->validate();
-
         $product_name = $request->input('product_name');
         $category_id = (int) $request->input('category_id', 1);
         $product_status = $request->input('product_status', 1);

@@ -27,13 +27,13 @@ class ProductFactory extends Factory
             'brand_id' => 3,
             'name' => $this->faker->name(),
             'description' => $this->faker->name(),
-            'price_core' => 100,
-            'price_sell' => 200,
+            'orginal_price' => 100,
+            'sell_price' => 200,
             'image' => "image",
             'quantity' => 100,
             'quantity_sold' => 50,
             'status' => 1,
-            'expired' => now(),
+            'expired_date' => now(),
             'product_hot' => 1,
         ];
     }

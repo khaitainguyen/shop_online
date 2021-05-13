@@ -19,7 +19,7 @@ class CreateIntroduceDetailsTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('desciption');
-            $table->integer('total_view');
+            $table->integer('total_view')->default(0);
             $table->timestamps();
         });
     }

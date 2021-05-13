@@ -27,8 +27,8 @@ class UpdateProductRequest extends FormRequest
             'product_name' => 'required',
             'category_id' => 'required',
             'product_desc' => 'required',
-            'product_quantity' => 'required',
-            'product_price' => 'required',
+            'product_quantity' => 'required|int',
+            'product_price' => 'required|int',
         ];
     }
 }

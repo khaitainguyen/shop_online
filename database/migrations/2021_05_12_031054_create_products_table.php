@@ -20,14 +20,14 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id');
             $table->string('name');
             $table->text('description');
-            $table->integer('price_core');
-            $table->integer('price_sell');
+            $table->integer('orginal_price');
+            $table->integer('sell_price');
             $table->string('image');
             $table->integer('quantity');
-            $table->integer('quantity_sold');
-            $table->integer('status');
-            $table->dateTime('expired');
-            $table->integer('product_hot');
+            $table->integer('quantity_sold')->default(0);
+            $table->integer('status')->comment('selling, stop sell');
+            $table->dateTime('expired_date');
+            $table->integer('is_hot')->default(1)->comment('hot product, normal');
             $table->timestamps();
         });
     }

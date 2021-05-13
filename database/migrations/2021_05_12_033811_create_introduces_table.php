@@ -17,7 +17,7 @@ class CreateIntroducesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('desciption');
-            $table->integer('type');
+            $table->integer('type')->comment('news, introduces')->default(1);
             $table->timestamps();
         });
     }
