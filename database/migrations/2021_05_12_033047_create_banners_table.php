@@ -17,7 +17,7 @@ class CreateBannersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->integer('status');
+            $table->integer('status')->default(2)->comment('running, stopped');
             $table->timestamps();
         });
     }

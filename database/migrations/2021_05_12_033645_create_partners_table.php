@@ -17,7 +17,7 @@ class CreatePartnersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->integer('status');
+            $table->integer('status')->comment('in ralashionship, out of relashionship');
             $table->timestamps();
         });
     }

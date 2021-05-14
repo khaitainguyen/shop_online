@@ -52,7 +52,7 @@
     @endif
 
     <div style="padding: 20px">
-        <a href="{{ url("/products/create") }}" class="btn btn-info">Create product</a>
+        <a href="{{ route('product.create')}}" class="btn btn-info">Create product</a>
     </div>
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
@@ -86,8 +86,8 @@
                             <td>{{ $product->price_sell }} USD</td>
                             <td>{{ $product->quantity }}</td>
                             <td>
-                                <a href="{{ url("/products/edit/$product->id") }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ url("/products/delete/$product->id") }}" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('product.delete', ['id' => $product->id]) }}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     @endforeach

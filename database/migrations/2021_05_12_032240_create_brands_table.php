@@ -18,7 +18,7 @@ class CreateBrandsTable extends Migration
             $table->string('name');
             $table->text('desciption');
             $table->string('image');
-            $table->string('address');
+            $table->text('address');
             $table->timestamps();
         });
     }

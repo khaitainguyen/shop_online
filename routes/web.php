@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index']);
+//products
+Route::get('/products/index', [ProductController::class, 'index'])->name("product.show");
+Route::get('/products/create', [ProductController::class, 'create'])->name("product.create");
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name("product.edit");
+Route::get('/products/delete/{id}', [ProductController::class, 'delete'])->name("product.delete");
+Route::post('/products/store', [ProductController::class, 'store'])->name("product.store");
+Route::post('/products/update/{id}', [ProductController::class, 'update'])->name("product.update");
+Route::post('/products/destroy/{id}', [ProductController::class, 'destroy'])->name("product.destroy");
 
-Route::get('/products/index', [ProductController::class, 'index']);
-Route::get('/products/create', [ProductController::class, 'create']);
-Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
-Route::get('/products/delete/{id}', [ProductController::class, 'delete']);
-Route::post('/products/store', [ProductController::class, 'store']);
-Route::post('/products/update/{article_id}', [ProductController::class, 'update']);
-Route::post('/products/destroy/{article_id}', [ProductController::class, 'destroy']);
+//users
+Route::get('/users/index', [UserController::class, 'index'])->name("user.show");
+Route::get('/users/create', [UserController::class, 'create'])->name("user.create");
+Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name("user.edit");
+Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name("user.delete");
+Route::post('/users/store', [UserController::class, 'store'])->name("user.store");
+Route::post('/users/update/{id}', [UserController::class, 'update'])->name("user.update");
+Route::post('/users/destroy/{id}', [UserController::class, 'destroy'])->name("user.destroy");
+
