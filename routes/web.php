@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,13 @@ Route::get('/brands/delete/{id}', [BrandController::class, 'delete'])->name("bra
 Route::post('/brands/store', [BrandController::class, 'store'])->name("brand.store");
 Route::post('/brands/update/{id}', [BrandController::class, 'update'])->name("brand.update");
 Route::post('/brands/destroy/{id}', [BrandController::class, 'destroy'])->name("brand.destroy");
+
+//partners
+Route::get('/partners/index', [PartnerController::class, 'index'])->name("partner.show");
+Route::get('/partners/create', [PartnerController::class, 'create'])->name("partner.create");
+Route::get('/partners/edit/{id}', [PartnerController::class, 'edit'])->name("partner.edit");
+Route::get('/partners/delete/{id}', [PartnerController::class, 'delete'])->name("partner.delete");
+Route::post('/partners/store', [PartnerController::class, 'store'])->name("partner.store");
+Route::post('/partners/update/{id}', [PartnerController::class, 'update'])->name("partner.update");
+Route::post('/partners/destroy/{id}', [PartnerController::class, 'destroy'])->name("partner.destroy");
 

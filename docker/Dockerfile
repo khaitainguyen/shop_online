@@ -13,6 +13,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 
 # RUN php artisan migrate
 
-# RUN php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=8000
 
 EXPOSE 8000
