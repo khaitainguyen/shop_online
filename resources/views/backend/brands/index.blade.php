@@ -10,7 +10,7 @@
         </div>
     @endif
     <div>
-        <form method="GET" name="search_user" action="{{ htmlspecialchars($_SERVER["REQUEST_URI"]) }}" class="form-inline">
+        <form method="GET" name="search_brand" action="{{ htmlspecialchars($_SERVER["REQUEST_URI"]) }}" class="form-inline">
             <input type="text" class="form-control" name="brand_name" id="brand_name" value="{{ $brand_name }}" placeholder="add brand name" autocomplete="off">
             <div>
                 <input type="submit" name="search" value="Search" class="btn btn-success">
@@ -20,6 +20,7 @@
     <div style="padding: 20px">
         <a href="{{ route('brand.create') }}" class="btn btn-info">Create brand</a>
     </div>
+    {{ $brands->links() }}
     <table class="table table-bordered" id="dataTable" width="100%">
         <thead>
             <tr>

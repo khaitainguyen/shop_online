@@ -29,6 +29,7 @@
     <div style="padding: 20px">
         <a href="{{ route('user.create') }}" class="btn btn-info">Create user</a>
     </div>
+    {{ $users->links() }}
     <table class="table table-bordered" id="dataTable" width="100%">
         <thead>
             <tr>
