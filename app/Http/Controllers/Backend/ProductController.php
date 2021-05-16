@@ -58,6 +58,8 @@ class ProductController extends Controller
         $data = [];
         $categories = DB::table('categories')->get();
         $data["categories"] = $categories;
+        $brands = DB::table('brands')->get();
+        $data['brands'] = $brands;
         return view("backend.products.create", $data);
     }
     public function edit($id){
@@ -77,14 +79,14 @@ class ProductController extends Controller
         $product->name = $request->input('product_name');
         $product->category_id = $request->input('category_id', 1);
         $product->category_parent_id = $request->input('category_id', 1);
-        $product->brand_id = $request->input('category_id', 1);
+        $product->brand_id = $request->input('brand_id');
         $product->status = $request->input('product_status', 1);
         $product->description = $request->input('product_desc');
         $product->image = $request->input('product_name', '');
         $product->quantity = $request->input('product_quantity');
         $product->quantity_sold = 0;
         $product->sell_price = $request->input('sell_price');
-        $product->orginal_price = $request->input('price_core');
+        $product->orginal_price = $request->input('orginal_price');
         $product->expired_date = now();
         $product->is_hot = $request->input('product_hot', 1);
         $product->save();

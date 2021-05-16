@@ -62,6 +62,7 @@
             <th>Product name</th>
             <th>Product price</th>
             <th>Quantity</th>
+            <th>Brand</th>
             <th>Status</th>
         </tr>
         </thead>
@@ -85,6 +86,7 @@
                             </td>
                             <td>{{ $product->sell_price }} USD</td>
                             <td>{{ $product->quantity }}</td>
+                            <td>{{ $product->brand_id}}</td>
                             <td>
                                 <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ route('product.delete', ['id' => $product->id]) }}" class="btn btn-danger">Delete</a>

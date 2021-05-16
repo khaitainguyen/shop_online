@@ -18,3 +18,7 @@
 2021/05/16 01:38:33 [crit] 20#20: pread() "/etc/nginx/conf.d/app.conf" failed (21: Is a directory)
 2021/05/16 01:38:35 [crit] 22#22: pread() "/etc/nginx/conf.d/app.conf" failed (21: Is a directory)
 2021/05/16 01:38:38 [crit] 24#24: pread() "/etc/nginx/conf.d/app.conf" failed (21: Is a directory)
+2021/05/16 08:42:51 [crit] 18#18: pread() "/etc/nginx/conf.d/app.conf" failed (21: Is a directory)
+2021/05/16 08:42:52 [crit] 20#20: pread() "/etc/nginx/conf.d/app.conf" failed (21: Is a directory)
+2021/05/16 08:42:54 [crit] 22#22: pread() "/etc/nginx/conf.d/app.conf" failed (21: Is a directory)
+2021/05/16 08:42:57 [crit] 24#24: pread() "/etc/nginx/conf.d/app.conf" failed (21: Is a directory)
