@@ -4,6 +4,11 @@
 
 @section('content')
     <h1>List Users</h1>
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <div>
         <form method="GET" name="search_user" action="{{ htmlspecialchars($_SERVER["REQUEST_URI"]) }}" class="form-inline">
             <input type="text" class="form-control" name="user_name" id="user_name" value="{{ $user_name }}" placeholder="add user name" autocomplete="off">
