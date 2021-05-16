@@ -11,8 +11,8 @@
 
             <select name="product_status" class="form-control" style="width: 150px; margin-right: 20px">
                 <option value="">Product status</option>
-                <option value="1" {{ $productStatus == 1 ? " selected" : "" }}>On sell</option>
-                <option value="2" {{ $productStatus == 2 ? " selected" : "" }}>Stop sell</option>
+                <option value="{{ $selling }}" {{ $productStatus == $selling ? " selected" : "" }}>On sell</option>
+                <option value="{{ $stop_sell }}" {{ $productStatus == $stop_sell ? " selected" : "" }}>Stop sell</option>
             </select>
 
             <select name="category_id" class="form-control" style="width: 250px; margin-right: 20px">
@@ -83,7 +83,7 @@
                                     <p><span class="bg-danger text-white">Stop Sell</span></p>
                                 @endif
                             </td>
-                            <td>{{ $product->price_sell }} USD</td>
+                            <td>{{ $product->sell_price }} USD</td>
                             <td>{{ $product->quantity }}</td>
                             <td>
                                 <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-warning">Edit</a>

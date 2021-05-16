@@ -47,10 +47,8 @@ class ProductController extends Controller
         $data["productStatus"] = $productStatus;
         $data["category_id"] = $category_id;
         $data["sort"] = $sort;
-        $data["sort"] = $sort;
-        $data["sort"] = $sort;
-       
-
+        $data["selling"] = self::SELLING;
+        $data["stop_sell"] = self::STOP_SELL;
         $categories = DB::table('categories')->get();
         $data["categories"] = $categories;
 
@@ -75,55 +73,33 @@ class ProductController extends Controller
         return view("backend.products.delete", compact('product'));
     }
     public function store(StoreProductRequest $request) {
-        $product_name = $request->input('product_name');
-        $category_id = $request->input('category_id', 1);
-        $category_parent_id = $request->input('category_id', 1);
-        $brand_id = $request->input('category_id', 1);
-        $product_status = $request->input('product_status', 1);
-        $product_desc = $request->input('product_desc');
-        $image = $request->input('product_name', '');
-        $product_quantity = $request->input('product_quantity');
-        $quantity_sold = 0;
-        $price_sell = $request->input('price_sell');
-        $price_core = $request->input('price_core');
-        $product_hot = $request->input('product_hot', 2);
-
         $product = new Product();
-
-        $product->name = $product_name;
-        $product->category_id = $category_id;
-        $product->category_parent_id = $category_parent_id;
-        $product->brand_id = $brand_id;
-        $product->status = $product_status;
-        $product->description = $product_desc;
-        $product->image = $image;
-        $product->quantity = $product_quantity;
-        $product->quantity_sold = $quantity_sold;
-        $product->price_sell = $price_sell;
-        $product->price_core = $price_core;
-        $product->expired = now();
-        $product->product_hot = $product_hot;
+        $product->name = $request->input('product_name');
+        $product->category_id = $request->input('category_id', 1);
+        $product->category_parent_id = $request->input('category_id', 1);
+        $product->brand_id = $request->input('category_id', 1);
+        $product->status = $request->input('product_status', 1);
+        $product->description = $request->input('product_desc');
+        $product->image = $request->input('product_name', '');
+        $product->quantity = $request->input('product_quantity');
+        $product->quantity_sold = 0;
+        $product->sell_price = $request->input('sell_price');
+        $product->orginal_price = $request->input('price_core');
+        $product->expired_date = now();
+        $product->is_hot = $request->input('product_hot', 1);
         $product->save();
 
         return redirect("products/index")->with('status', 'Create product success !');
     }
 
     public function update(UpdateProductRequest $request, $id) {
-        $product_name = $request->input('product_name');
-        $category_id = (int) $request->input('category_id', 1);
-        $product_status = $request->input('product_status', 1);
-        $product_desc = $request->input('product_desc');
-        $product_quantity = $request->input('product_quantity');
-        $product_price = $request->input('price_sell');
-
         $product = Product::findOrFail($id);
-       
-        $product->name = $product_name;
-        $product->category_id = $category_id;
-        $product->status = $product_status;
-        $product->description = $product_desc;
-        $product->quantity = $product_quantity;
-        $product->price_sell = $product_price;
+        $product->name = $request->input('product_name');
+        $product->category_id = (int) $request->input('category_id', 1);
+        $product->status = $request->input('product_status', 1);
+        $product->description = $request->input('product_desc');
+        $product->quantity = $request->input('product_quantity');
+        $product->sell_price = $request->input('sell_price');
         $product->save();
         return redirect("products/index")->with('status', 'Update product success !');
 

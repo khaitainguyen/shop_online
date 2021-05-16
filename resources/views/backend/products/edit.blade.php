@@ -86,8 +86,8 @@
             <input type="number" name="product_quantity" value="{{ $product->quantity }}" style="width: 250px" class="form-control" id="product_quantity">
         </div>
         <div class="form-group">
-            <label for="product_price">Price product:</label>
-            <input type="text" name="product_price" value="{{ $product->price_sell }}" style="width: 250px" class="form-control" id="product_price">
+            <label for="sell_price">Sell price product:</label>
+            <input type="text" name="sell_price" value="{{ $product->sell_price }}" style="width: 250px" class="form-control" id="sell_price">
         </div>
 
 

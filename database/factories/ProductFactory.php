@@ -34,7 +34,7 @@ class ProductFactory extends Factory
             'quantity_sold' => 50,
             'status' => 1,
             'expired_date' => now(),
-            'product_hot' => 1,
+            'is_hot' => 1,
         ];
     }
 }
