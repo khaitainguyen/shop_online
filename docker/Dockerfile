@@ -7,5 +7,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --version=2.0.9
 
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# RUN composer install --no-autoloader --no-scripts --no-interaction
+
+# RUN composer dump-autoload --optimize --no-interaction
+
+# RUN php artisan migrate
+
+# RUN php artisan serve --host=0.0.0.0 --port=8000
+
 EXPOSE 8000
