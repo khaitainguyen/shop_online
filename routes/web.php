@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\ProductController;
@@ -61,3 +62,11 @@ Route::post('/partners/store', [PartnerController::class, 'store'])->name("partn
 Route::post('/partners/update/{id}', [PartnerController::class, 'update'])->name("partner.update");
 Route::post('/partners/destroy/{id}', [PartnerController::class, 'destroy'])->name("partner.destroy");
 
+//feedbacks
+Route::get('/feedbacks/index', [FeedbackController::class, 'index'])->name("feedback.show");
+Route::get('/feedbacks/create', [FeedbackController::class, 'create'])->name("feedback.create");
+Route::get('/feedbacks/edit/{id}', [FeedbackController::class, 'edit'])->name("feedback.edit");
+Route::get('/feedbacks/delete/{id}', [FeedbackController::class, 'delete'])->name("feedback.delete");
+Route::post('/feedbacks/store', [FeedbackController::class, 'store'])->name("feedback.store");
+Route::post('/feedbacks/update/{id}', [FeedbackController::class, 'update'])->name("feedback.update");
+Route::post('/feedbacks/destroy/{id}', [FeedbackController::class, 'destroy'])->name("feedback.destroy");
