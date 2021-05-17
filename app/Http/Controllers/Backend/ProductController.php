@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
@@ -77,8 +78,8 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request) {
         $product = new Product();
         $product->name = $request->input('product_name');
-        $product->category_id = $request->input('category_id', 1);
-        $product->category_parent_id = $request->input('category_id', 1);
+        $product->category_id = $request->input('category_id');
+        $product->category_parent_id = $request->input('category_parent_id', 1);
         $product->brand_id = $request->input('brand_id');
         $product->status = $request->input('product_status', 1);
         $product->description = $request->input('product_desc');

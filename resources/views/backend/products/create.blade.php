@@ -25,13 +25,14 @@
 
         <div class="form-group">
             <label for="product_category">Categories:</label>
-            <!-- <select name="category_id">
+            <select name="category_id">
                 <option>-- Select category --</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ $cat_par = $category->parent_id }}>{{ $category->name }}</option>
                 @endforeach
-            </select> -->
+            </select>
         </div>
+        <input type="hidden" name="category_parent_id" id="category_parent_id" value="{{ $cat_par }}">
         <div class="form-group">
             <label for="brand_id">Brand name:</label>
             <select name="brand_id" id="brand_id">

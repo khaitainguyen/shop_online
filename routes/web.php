@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\PartnerController;
@@ -80,3 +81,12 @@ Route::get('/banners/delete/{id}', [BannerController::class, 'delete'])->name("b
 Route::post('/banners/store', [BannerController::class, 'store'])->name("banner.store");
 Route::post('/banners/update/{id}', [BannerController::class, 'update'])->name("banner.update");
 Route::post('/banners/destroy/{id}', [BannerController::class, 'destroy'])->name("banner.destroy");
+
+//categories
+Route::get('/categories/index', [CategoryController::class, 'index'])->name("category.show");
+Route::get('/categories/create', [CategoryController::class, 'create'])->name("category.create");
+Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name("category.edit");
+Route::get('/categories/delete/{id}', [CategoryController::class, 'delete'])->name("category.delete");
+Route::post('/categories/store', [CategoryController::class, 'store'])->name("category.store");
+Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name("category.update");
+Route::post('/categories/destroy/{id}', [CategoryController::class, 'destroy'])->name("category.destroy");
