@@ -60,6 +60,7 @@
             <th>Id</th>
             <th>image</th>
             <th>Product name</th>
+            <th>Category</th>
             <th>Product price</th>
             <th>Quantity</th>
             <th>Brand</th>
@@ -67,7 +68,7 @@
         </tr>
         </thead>
         <tbody>
-            @if(isset($products) && !empty($products))
+            @if(!empty($products))
                     @foreach ($products as $product)
                         <tr>
                             <td>{{ $product->id }}</td>
@@ -84,6 +85,7 @@
                                     <p><span class="bg-danger text-white">Stop Sell</span></p>
                                 @endif
                             </td>
+                            <td>{{ $product->category->name }}</td>
                             <td>{{ $product->sell_price }} USD</td>
                             <td>{{ $product->quantity }}</td>
                             <td>{{ $product->brand_id}}</td>
