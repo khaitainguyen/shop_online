@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\UserController;
+use App\Models\Information;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,11 @@ Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name("user.
 Route::post('/users/store', [UserController::class, 'store'])->name("user.store");
 Route::post('/users/update/{id}', [UserController::class, 'update'])->name("user.update");
 Route::post('/users/destroy/{id}', [UserController::class, 'destroy'])->name("user.destroy");
+//information
+Route::get('/information', [InformationController::class, 'index'])->name("information.show");
+Route::get('/information/create', [InformationController::class, 'create'])->name("information.create");
+Route::post('/information/store', [InformationController::class, 'store'])->name("information.store");
+Route::post('/information/update/{id}', [InformationController::class, 'update'])->name("information.update");
 
 //brands
 Route::get('/brands/index', [BrandController::class, 'index'])->name("brand.show");
