@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Backend\InformationController;
@@ -70,3 +71,12 @@ Route::get('/feedbacks/delete/{id}', [FeedbackController::class, 'delete'])->nam
 Route::post('/feedbacks/store', [FeedbackController::class, 'store'])->name("feedback.store");
 Route::post('/feedbacks/update/{id}', [FeedbackController::class, 'update'])->name("feedback.update");
 Route::post('/feedbacks/destroy/{id}', [FeedbackController::class, 'destroy'])->name("feedback.destroy");
+
+//banners
+Route::get('/banners/index', [BannerController::class, 'index'])->name("banner.show");
+Route::get('/banners/create', [BannerController::class, 'create'])->name("banner.create");
+Route::get('/banners/edit/{id}', [BannerController::class, 'edit'])->name("banner.edit");
+Route::get('/banners/delete/{id}', [BannerController::class, 'delete'])->name("banner.delete");
+Route::post('/banners/store', [BannerController::class, 'store'])->name("banner.store");
+Route::post('/banners/update/{id}', [BannerController::class, 'update'])->name("banner.update");
+Route::post('/banners/destroy/{id}', [BannerController::class, 'destroy'])->name("banner.destroy");
