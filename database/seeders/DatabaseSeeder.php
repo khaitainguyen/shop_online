@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Brand;
+use App\Models\Introduce;
+use App\Models\IntroduceDetail;
 use App\Models\Partner;
 use App\Models\Product;
 use App\Models\User;
@@ -22,5 +24,7 @@ class DatabaseSeeder extends Seeder
         Product::factory(10)->create();
         Brand::factory(10)->create();
         Partner::factory(10)->create();
+        Introduce::factory(10)->create();
+        IntroduceDetail::factory(100)->create();
     }
 }
