@@ -7,8 +7,8 @@
     <div style="padding: 10px; border: 1px solid #4e73df; margin-bottom: 10px">
         <form name="search_product" method="get" action="{{ htmlspecialchars($_SERVER["REQUEST_URI"]) }}" class="form-inline">
 
-            <input name="product_name" value="{{ $searchKeyword }}" class="form-control" style="width: 350px; margin-right: 20px" placeholder="add.." autocomplete="off">
-
+            <input name="product_name" value="{{ $searchKeyword }}" class="form-control" style="width: 350px; margin-right: 20px" placeholder="add name" autocomplete="off">
+            <input name="category_name" value="{{ $searchCategory }}" class="form-control" style="width: 350px; margin-right: 20px" placeholder="add category" autocomplete="off">
             <select name="product_status" class="form-control" style="width: 150px; margin-right: 20px">
                 <option value="">Product status</option>
                 <option value="{{ $selling }}" {{ $productStatus == $selling ? " selected" : "" }}>On sell</option>
@@ -43,7 +43,7 @@
         </form>
     </div>
 
-    {{ $products->links() }}
+    {{ !empty($products->links()) ? $products->links() : '' }}
 
     @if (session('status'))
         <div class="alert alert-success">
@@ -70,6 +70,9 @@
         <tbody>
             @if(!empty($products))
                     @foreach ($products as $product)
+                    <?php
+                    // dd($product);
+                    ?>
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>
@@ -77,18 +80,18 @@
                             <td>
                                 {{ $product->name }}
 
-                                @if($product->status == 1)
+                                @if($product->status == $selling )
                                     <p><span class="bg-success text-white">On Sell</span></p>
                                 @endif
 
-                                @if($product->status == 2)
+                                @if($product->status == $stop_sell )
                                     <p><span class="bg-danger text-white">Stop Sell</span></p>
                                 @endif
                             </td>
-                            <td>{{ $product->category->name }}</td>
+                            <td>{{ !empty($product->category_name) ? $product->category_name : "" }}</td>
                             <td>{{ $product->sell_price }} USD</td>
                             <td>{{ $product->quantity }}</td>
-                            <td>{{ $product->brand_id}}</td>
+                            <td>{{ !empty($product->brand) ? $product->brand->name : ""}}</td>
                             <td>
                                 <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="btn btn-warning">Edit</a>
                                 <a href="{{ route('product.delete', ['id' => $product->id]) }}" class="btn btn-danger">Delete</a>
@@ -100,7 +103,7 @@
                 @endif
         </tbody>
     </table>
-    {{ $products->links() }}
+    {{ !empty($products->links()) ? $products->links() : '' }}
 @endsection
 @section('appendjs')
 

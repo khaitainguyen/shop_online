@@ -5,10 +5,11 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Backend\InformationController;
+use App\Http\Controllers\Backend\IntroduceController;
+use App\Http\Controllers\Backend\IntroduceDetailController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\UserController;
-use App\Models\Information;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,3 +91,21 @@ Route::get('/categories/delete/{id}', [CategoryController::class, 'delete'])->na
 Route::post('/categories/store', [CategoryController::class, 'store'])->name("category.store");
 Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name("category.update");
 Route::post('/categories/destroy/{id}', [CategoryController::class, 'destroy'])->name("category.destroy");
+
+//introduces
+Route::get('/introduces/index', [IntroduceController::class, 'index'])->name("introduce.show");
+Route::get('/introduces/create', [IntroduceController::class, 'create'])->name("introduce.create");
+Route::get('/introduces/edit/{id}', [IntroduceController::class, 'edit'])->name("introduce.edit");
+Route::get('/introduces/delete/{id}', [IntroduceController::class, 'delete'])->name("introduce.delete");
+Route::post('/introduces/store', [IntroduceController::class, 'store'])->name("introduce.store");
+Route::post('/introduces/update/{id}', [IntroduceController::class, 'update'])->name("introduce.update");
+Route::post('/introduces/destroy/{id}', [IntroduceController::class, 'destroy'])->name("introduce.destroy");
+
+//introduce detail
+Route::get('/introducedetail/index', [IntroduceDetailController::class, 'index'])->name("introducedetail.show");
+Route::get('/introducedetail/create', [IntroduceDetailController::class, 'create'])->name("introducedetail.create");
+Route::get('/introducedetail/edit/{id}', [IntroduceDetailController::class, 'edit'])->name("introducedetail.edit");
+Route::get('/introducedetail/delete/{id}', [IntroduceDetailController::class, 'delete'])->name("introducedetail.delete");
+Route::post('/introducedetail/store', [IntroduceDetailController::class, 'store'])->name("introducedetail.store");
+Route::post('/introducedetail/update/{id}', [IntroduceDetailController::class, 'update'])->name("introducedetail.update");
+Route::post('/introducedetail/destroy/{id}', [IntroduceDetailController::class, 'destroy'])->name("introducedetail.destroy");

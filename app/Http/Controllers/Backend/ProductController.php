@@ -17,18 +17,26 @@ class ProductController extends Controller
    
     public function index(Request $request){
        
-        $sort = $request->query('product_sort', "");
-        $searchKeyword = $request->query('product_name', "");
-        $productStatus = (int) $request->query('product_status', "");
-        $category_id = (int) $request->query('category_id', 0);
+        $sort = $request->query('product_sort', '');
+        $searchKeyword = $request->query('product_name', '');
+        $searchCategory = $request->query('category_name', '');
+        $productStatus = (int) $request->query('product_status', '');
+        $category_id = (int) $request->query('category_id');
         $allProductStatus = [1,2];
-
-        $queryORM = Product::where('name', "LIKE", "%".$searchKeyword."%");
-
+        $queryORM = Product::where('products.name', "LIKE", "%".$searchKeyword."%")
+            ->with('brand')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'categories.name as category_name', 'categories.id as category_id')
+            ;
         if (in_array($productStatus, $allProductStatus)) {
             $queryORM = $queryORM->where('status',$productStatus);
         }
-
+        if (!empty($category_id)){
+            $queryORM = $queryORM->where('category_id', $category_id);
+        }
+        if (!empty($searchCategory)){
+            $queryORM = $queryORM->where('categories.name', $searchCategory);
+        }
         if ($sort == "price_asc") {
             $queryORM->orderBy('price_sell', 'asc');
         }
@@ -45,6 +53,7 @@ class ProductController extends Controller
         $data = [];
         $data["products"] = $products;
         $data["searchKeyword"] = $searchKeyword;
+        $data["searchCategory"] = $searchCategory;
         $data["productStatus"] = $productStatus;
         $data["category_id"] = $category_id;
         $data["sort"] = $sort;
@@ -52,7 +61,6 @@ class ProductController extends Controller
         $data["stop_sell"] = self::STOP_SELL;
         $categories = DB::table('categories')->get();
         $data["categories"] = $categories;
-
         return view("backend.products.index", $data);
     }
     public function create(){
@@ -79,7 +87,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->input('product_name');
         $product->category_id = $request->input('category_id');
-        $product->category_parent_id = $request->input('category_parent_id', 1);
+        $product->category_parent_id = $request->input('category_id', 1);
         $product->brand_id = $request->input('brand_id');
         $product->status = $request->input('product_status', 1);
         $product->description = $request->input('product_desc');
