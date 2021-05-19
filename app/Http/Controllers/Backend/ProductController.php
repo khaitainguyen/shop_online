@@ -9,6 +9,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -91,7 +92,7 @@ class ProductController extends Controller
         $product->brand_id = $request->input('brand_id');
         $product->status = $request->input('product_status', 1);
         $product->description = $request->input('product_desc');
-        $product->image = $request->input('product_name', '');
+        $product->image = $request->file('product_image')->store('public/productimages');
         $product->quantity = $request->input('product_quantity');
         $product->quantity_sold = 0;
         $product->sell_price = $request->input('sell_price');
@@ -111,6 +112,12 @@ class ProductController extends Controller
         $product->description = $request->input('product_desc');
         $product->quantity = $request->input('product_quantity');
         $product->sell_price = $request->input('sell_price');
+        if ($request->hasFile('product_image')){
+            if ($product->image) {
+                Storage::delete($product->image);
+            }
+            $product->image = $request->file('product_image')->store('public/productimages');
+        }
         $product->save();
         return redirect("products/index")->with('status', 'Update product success !');
 

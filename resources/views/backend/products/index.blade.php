@@ -58,7 +58,7 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>image</th>
+            <th>Image</th>
             <th>Product name</th>
             <th>Category</th>
             <th>Product price</th>
@@ -76,6 +76,14 @@
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>
+                                @if ($product->image)
+                                    <?php
+                                        $product->image = str_replace('public/', '', $product->image);
+                                    ?>
+                                    <div>
+                                        <img src="{{ asset("storage/$product->image") }}" style="width: 200px; height:auto" />
+                                    </div>
+                                @endif
                             </td>
                             <td>
                                 {{ $product->name }}

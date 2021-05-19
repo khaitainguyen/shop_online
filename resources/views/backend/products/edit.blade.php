@@ -68,7 +68,14 @@
         <div class="form-group">
             <label for="product_image">Image product:</label>
             <input type="file" name="product_image" class="form-control" id="product_image">
-
+            @if($product->image)
+                <?php
+                    $product->image = str_replace("public/", "", $product->image);
+                ?>
+                <div>
+                    <img src="{{ asset("storage/$product->image") }}" style="width: 200px; height: auto" />
+                </div>
+            @endif
         </div>
         <div class="form-group">
             <label for="product_image">Description:</label>
